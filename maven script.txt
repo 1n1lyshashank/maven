@@ -1,0 +1,20 @@
+node{
+    stage('Clone Repository'){
+        git branch: 'main', url: 'https://github.com/1n1lyshashank/ec2-git-demo.git'
+    }
+    
+    stage('setup maven'){
+        def mvn = '/usr/share/maven'
+        
+        env.PATH = "${mvnHome}/bin:${env.PATH}"
+        evn.M2.HOME = mvnHome
+        
+        sh 'mvn -version'
+    }
+    stage('Build the code'){
+        sh 'mvn install'
+    }
+        
+    
+    
+}
